@@ -14,3 +14,19 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+var options = {
+    type: "POST",
+    url: "http://52.177.219.177/Claims",
+    dataType: "json",
+    data: {"PatientId": 1, "ProviderId": 1, "VisitedDate": "2018-06-28T17:32:37.716Z", "ClaimDescription": "Dead patient", "ClaimAmount": 450},
+    contentType: "application/json"
+};
+
+jQuery(document).ready(function() {
+	jQuery("button").click(function(e) {
+	    e.preventDefault();
+		jQuery.ajax(options)
+	});
+});
+

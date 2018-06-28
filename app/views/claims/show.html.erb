@@ -1,0 +1,15 @@
+<h1> CLAIMS DATA for <%= @patient_id %> :</h1>
+
+<table>
+	<thead>
+		<th>
+			<tr>Procedue Type</tr>
+			<tr>Cost </tr>
+		</th>
+	</thead>
+	<tbody>
+
+
+<% test_json = {"PatientId": 1, "ProviderId": 1, "VisitedDate": "2018-06-28T17:32:37.716Z", "ClaimDescription": "Dead patient", "ClaimAmount": 450} %>
+
+ <button name="claim" type="submit" value="<%= test_json%>">Send Claims</button>
