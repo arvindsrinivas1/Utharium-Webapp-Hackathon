@@ -1,17 +1,63 @@
+<script>
+	jQuery(document).ready(function() {
+	    $.get("http://52.177.219.177/Payer/GetPatientData/<%= @patient_id %>", function(data, status){
+	    		console.log("<%= @patient_id %>")
+	            $("#PatientId").html(data.PatientId);
+	            $("#Name").html(data.Name);
+	            $("#Age").html(data.Age);
+	            $("#Zip").html(data.PatientId);
+	            $("#Address").html(data.Address);
+
+	        });	
+		jQuery("#claim").click(function(e) {
+			claim_desc = $('#desc').val();
+			claim_cost = $('#amount').val();
+			jQuery.ajax({
+				type: "POST",
+				dataType : 'json',
+	    		url: "http://52.177.219.177/Claims",
+			    data: {"PatientId": <%= @patient_id %>, "ProviderId": 1, "VisitedDate": "2018-06-28T17:32:37.716Z", "ClaimDescription": claim_desc, "ClaimAmount": claim_cost},
+			    success: function(result) {
+			    alert(result);	
+	 	     	console.log("lololol");
+	          }
+
+			});
+		});
+	});
+</script>
+
+
+
 <h1> CLAIMS DATA for <%= @patient_id %> :</h1>
 
-<table>
-	<thead>
-		<th>
-			<tr>Procedue Type</tr>
-			<tr>Cost </tr>
-		</th>
-	</thead>
-	<tbody></tbody>
-</table>
+<div>
+			<table>
+				<tr>
+					<td>Patient Id</td>
+					<td id="PatientId"></td>
+				</tr>
+				<tr>
+					<td>Payer Name</td>
+					<td id="Name"></td>
+				</tr>
+				<tr>
+					<td>Age</td>
+					<td id="Age"></td>
+				</tr>
+				<tr>
+					<td>Zip Code</td>
+					<td id="Zip"></td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td id="Address"></td>
+				</tr>
+			</table>
+</div>
 
-<% test_json = {"PatientId": 1, "ProviderId": 1, "VisitedDate": "2018-06-28T17:32:37.716Z", "ClaimDescription": "Dead patient", "ClaimAmount": 450} %>
 
 
-
- <input name="claim" type="submit" id="name" value="Send Claims"/>
+ <input type="text" name="ClaimDescription" id="desc" />
+ <input type="text"	name="ClaimAmount" id="amount"/>
+ <input name="claim" type="submit" id="claim" value="Send Claims"/>
