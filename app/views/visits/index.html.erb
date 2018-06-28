@@ -1,0 +1,18 @@
+<h1> Visits for <%= @patient_id %> :</h1>
+
+<table>
+  <thead>
+  <th>
+    <tr>Provider Id </tr>
+    <tr>Patient Id  </tr>
+    <tr>Visit Time  </tr>
+  </th>
+  </thead>
+  <tbody>
+    <% @visits.each do |v| %>
+      <tr> <%= v.patient_id %> </tr>
+      <tr> <%= v.provider_id %> </tr>
+      <tr> <%= v.visit_time %> </tr>
+    <% end %>
+  </tbody>
+  </table>

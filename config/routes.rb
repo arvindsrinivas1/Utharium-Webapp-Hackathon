@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 root :to =>"claims#index"
 
 resources :claims
+resources :visits
 
 end
