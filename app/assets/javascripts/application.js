@@ -14,21 +14,3 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
-
-
-jQuery(document).ready(function() {
-	jQuery("#name").click(function(e) {
-		debugger;
-		jQuery.ajax({
-			type: "POST",
-    		url: "http://52.177.219.177/Claims",
-		    data: {"PatientId": 1, "ProviderId": 1, "VisitedDate": "2018-06-28T17:32:37.716Z", "ClaimDescription": "Dead patient", "ClaimAmount": 450},
-		    success: function(result) {
- 	     	console.log("lololol");
-          }
-
-		});
-	});
-});
-
