@@ -1,13 +1,12 @@
 <script>
 	jQuery(document).ready(function() {
 	    $.get("http://52.177.219.177/Payer/GetPatientData/<%= @patient_id %>", function(data, status){
-	    		console.log("<%= @patient_id %>")
 	            $("#PatientId").html(data.PatientId);
 	            $("#Name").html(data.Name);
 	            $("#Age").html(data.Age);
 	            $("#Zip").html(data.PatientId);
 	            $("#Address").html(data.Address);
-
+	            $("#heading").html("CLAIMS DATA for " + data.Name);	
 	        });	
 		jQuery("#claim").click(function(e) {
 			claim_desc = $('#desc').val();
@@ -27,12 +26,13 @@
 	});
 </script>
 
+<div class="container">
+<div class="row claims-header">
+	<h1 id="heading"> CLAIMS DATA for <%= @patient_id %> :</h1>
+</div>
 
-
-<h1> CLAIMS DATA for <%= @patient_id %> :</h1>
-
-<div>
-			<table>
+<div class="row patient-data">
+			<table class="table table-bordered">
 				<tr>
 					<td>Patient Id</td>
 					<td id="PatientId"></td>
@@ -56,8 +56,30 @@
 			</table>
 </div>
 
+<div class="row claims-data">
+	<table class="table table-bordered">
+	  <tr>
+	    <th class="tg-us36">Claims Description</th>
+	    <th class="tg-us36">Cost</th>
+	  </tr>
+	  <tr>
+	    <td class="tg-us36">Radiation</td>
+	    <td class="tg-us36">$30</td>
+	  </tr>
+	  <tr>
+	    <td class="tg-us36">X-Ray</td>
+	    <td class="tg-us36">$50</td>
+	  </tr>  
+	  <tr>
+	    <td class="tg-us36">Blood test</td>
+	    <td class="tg-us36">$30</td>
+	  </tr>  
+	</table>
+</div>
 
-
- <input type="text" name="ClaimDescription" id="desc" />
- <input type="text"	name="ClaimAmount" id="amount"/>
- <input name="claim" type="submit" id="claim" value="Send Claims"/>
+	 <input type="hidden" name="ClaimDescription" id="desc" value="X-ray"/>
+	 <input type="hidden" name="ClaimAmount" id="amount" value="30"/>
+	 <div class="row">	
+	 	<input class=" btn btn-success" name="claim" type="submit" id="claim" value="Send Claims"/>
+	 </div>
+</div>

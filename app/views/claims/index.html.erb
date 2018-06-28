@@ -1,5 +1,14 @@
-  <form action="claims/show" method="get">
-    <input type="text" name='patient_id'>
+
+
+<div class="container" id="enter-patient">
+  <form class="form-inline" action="claims/show" method="get">
+    <div class="form-group">
+    	<label for="patient-id"	>Patient ID:</label>
+    		<input class="form-control" type="text" id="patient-id" placeholder="Enter patient id" name='patient_id'>
+
+    </div>
     <!-- other inputs here -->
-    <input type="submit" value="Enter Patient ID">
+
+    <input class="btn btn-primary go-button" type="submit" value="Go!"/>
   </form>
+</div>  

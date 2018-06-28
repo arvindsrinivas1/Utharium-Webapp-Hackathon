@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+.patient-data{
+	margin-top: 5%;
+}
+.claims-data{
+	margin-top: 5%;
+}
+#enter-patient{
+	margin-top: 20%;
+	margin-left: 30%;
+}
+.go-button{
+	margin-left: 10px;
+}
