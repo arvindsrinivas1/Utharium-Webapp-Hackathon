@@ -11,6 +11,10 @@ class ClaimsController < ApplicationController
 	@patient_claims_data = Claim.get_claims_data[@patient_id.to_sym]	
 	end	
 
+	def payer_process
+		@patient_id = params["id"]
+	end	
+
 	protected
 
 	def get_formatted_response(claims_data,total_cost)
@@ -21,4 +25,6 @@ class ClaimsController < ApplicationController
 	def test
 		
 	end	
+
+
 end

@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">		
+		<script>
+			jQuery(document).ready(function() {
+			    $.get("http://52.177.219.177/EMR/GetProvidersPatientVisitList/Provider/1", function(data, status){
+			    	    var count = 0;
+			    	    console.log("asdasdas");
+						console.log(data);
+		                for(count=0; count<data.length; count++){
+		                	debugger;
+			            	$(".visit-class").append('<tr><td>'+data[count].PatientName+'</td><td>' + data[count]	.VisitTime + '</td></tr>');
+		                }
+			        });
+			});	
+		</script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row visits-header">
+				<h1 id="visits-heading">Patient visit details for Provider_<%= @provider_id %></h1>
+			</div>	
+
+			<div class="row patient-visit">
+				<table class="table table-bordered visit-class">
+					<tr>
+						<th>Patient</th>
+						<th>Time</th>
+					</tr>
+				</table>	
+			</div>	
+		</div>
+	</body>
+
+</html>

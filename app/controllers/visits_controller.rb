@@ -11,4 +11,10 @@ class VisitsController < ApplicationController
   def index
     @visits = Visit.all
   end
+
+  def patient_visits
+    @provider_id = params["id"]
+    
+  end
+   
 end
